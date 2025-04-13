@@ -1,0 +1,11 @@
+/* Import Tailwind's base styles (resets and global styles) */
+@tailwind base;
+
+/* Import Tailwind's component styles (predefined UI components) */
+@tailwind components;
+
+/* Import Tailwind's utility styles (utility classes for styling) */
+@tailwind utilities;
+
+/* Import Font Awesome styles for using icons */
+@import '@fortawesome/fontawesome-free/css/all.css';
