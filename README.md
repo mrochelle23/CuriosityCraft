@@ -70,7 +70,7 @@ frontend/
     npm start
     ```
     This will start the application on
-    `http://localhost:3000`
+    `http://localhost:3000`.
 4. **Build for Production** (Optional):
     ```bash
     npm run build
