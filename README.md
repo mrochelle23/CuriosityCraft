@@ -69,13 +69,13 @@ frontend/
     ```bash
     npm start
     ```
-    This will build and application on
+    This will start the application on
     `http://localhost:3000`
 4. **Build for Production** (Optional):
     ```bash
     npm run build
     ```
-    This will create an optimized production build in `build/` directory.
+    This will create an optimized production build in the `build/` directory.
 
 ---
 
