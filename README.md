@@ -107,5 +107,5 @@ The project uses PostCSS to process Tailwind CSS. The configuration is defined i
 
 ## Software Artifats
 * [Class/Object Diagram](https://lucid.app/lucidspark/98930a76-cb6a-4a0e-a503-af1c79e8c7cc/edit?invitationId=inv_f3b4997e-2e98-4514-aec3-5268fe1228da)
-* [Desktop Screenshots (Screen w/ Min-width 835px)](screenshots/desktop_screenshots)
-* [Tablet Screenshots (Screen w/ Max-width 834px)](screenshots/tablet_screenshots)
+* [Desktop Screenshots (Screen w/ Min-width 835px)](screenshots/desktop-screenshots)
+* [Tablet Screenshots (Screen w/ Max-width 834px)](screenshots/tablet-screenshots)
