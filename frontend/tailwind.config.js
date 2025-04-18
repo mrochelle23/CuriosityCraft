@@ -14,4 +14,12 @@ module.exports = {
   plugins: [
     // Add any Tailwind CSS plugins here (e.g., forms, typography, etc.)
   ],
+
+  theme: {
+    extend: {
+      screens: {
+        'max-834px': { 'max': '834px' }, // Custom screen size for max-width 834px
+      },
+    },
+  },
 };

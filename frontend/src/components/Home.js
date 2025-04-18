@@ -51,7 +51,7 @@ function Home() {
       </div>
 
       {/* Grid container for displaying toys */}
-      <div className="container mx-auto w-full grid grid-cols-2 gap-8 mt-8">
+      <div className="container mx-auto w-full grid grid-cols-2 max-834px:grid-cols-1 gap-8 mt-8">
         {toys.map((toy) => (
           <div
             key={toy.id}
