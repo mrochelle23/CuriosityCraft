@@ -14,6 +14,8 @@ frontend/
     ├── images/
         ├── toy.png
         ├── toy2.png
+        ├── toy3.png
+        ├── toy4.png
     ├── index.html
 ├── src/
 │ ├── components/
@@ -59,7 +61,7 @@ frontend/
 1. **Clone the Repository**:
    ```bash
    git clone <repository-url>
-   cd frontend
+   cd CuriosityCraft/frontend
    ```
 2. **Install Dependencies**:
     ```bash
