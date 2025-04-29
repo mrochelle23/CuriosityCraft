@@ -3,7 +3,7 @@ module.exports = {
   // Specify the paths to all of your template files
   content: [
     // Add paths to your HTML, JavaScript, and React component files
-    './src/**/*.{js,jsx,ts,tsx}', // Include all files in the src directory with these extensions
+    './src/**/*.{html,js,jsx,ts,tsx}', // Include all files in the src directory with these extensions
   ],
   theme: {
     // Extend the default Tailwind CSS theme
