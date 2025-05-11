@@ -3,27 +3,31 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 function Cart() {
-  // Access cart data and functions from CartContext
   const { cart, updateCartQuantity, removeFromCart } = useContext(CartContext);
+
+  // Calculate the total price of the cart
+  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className="container mx-auto p-4">
-      {/* Page heading */}
       <h2 className="text-3xl font-bold mb-8 text-center">Shopping Cart</h2>
-      {/* Display message if the cart is empty */}
       {cart.length === 0 ? (
         <p className="text-center">Your cart is empty.</p>
       ) : (
-        // Display cart items in a grid
-        <div className="grid grid-cols-1 gap-4">
-          {cart.map((item) => (
-            <CartItem
-              key={item.id} // Unique key for each cart item
-              item={item} // Pass item data as a prop
-              updateCartQuantity={updateCartQuantity} // Pass function to update quantity
-              removeFromCart={removeFromCart} // Pass function to remove item
-            />
-          ))}
+        <div>
+          <div className="grid grid-cols-1 gap-4">
+            {cart.map((item) => (
+              <CartItem
+                key={item.id}
+                item={item}
+                updateCartQuantity={updateCartQuantity}
+                removeFromCart={removeFromCart}
+              />
+            ))}
+          </div>
+          <div className="mt-8 text-right">
+            <h3 className="text-2xl font-bold">Total: ${totalPrice.toFixed(2)}</h3>
+          </div>
         </div>
       )}
     </div>
@@ -31,35 +35,34 @@ function Cart() {
 }
 
 function CartItem({ item = {}, updateCartQuantity, removeFromCart }) {
-  const { id, name, price, image, quantity } = item; // Destructure item properties
+  const { id, name, price, image, quantity } = item;
 
-  // State to track hover status for the expandable circle
+  // Define the isHovered state
   const [isHovered, setIsHovered] = useState(false);
+
+  // Calculate the total price for this item
+  const itemTotalPrice = price * quantity;
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-4 flex items-center justify-between">
-      {/* Left: Item details */}
       <div className="flex items-center">
-        {/* Item image with fallback to a default image */}
         <img
-          src={image || '/images/default.png'}
+          src={image || '/images/default.png'} // Fallback to a default image
           alt={name || 'Item'}
           className="w-16 h-16 object-contain mr-4"
         />
         <div>
-          {/* Link to the item's details page */}
           <Link to={`/toys/${id}`} className="text-xl font-bold">
             {name || 'Unknown Item'}
           </Link>
-          {/* Item price */}
-          <p className="text-gray-700">${price || '0.00'}</p>
+          <p className="text-gray-700">${itemTotalPrice.toFixed(2)}</p>
         </div>
       </div>
-      {/* Right: Expandable circle for quantity controls */}
+      {/* Expandable Circle */}
       <div
         className="relative"
-        onMouseEnter={() => setIsHovered(true)} // Show expanded controls on hover
-        onMouseLeave={() => setIsHovered(false)} // Collapse controls when not hovered
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <div
           className={`flex items-center justify-center bg-blue-500 text-white font-bold rounded-full transition-all duration-300 ${
@@ -68,32 +71,31 @@ function CartItem({ item = {}, updateCartQuantity, removeFromCart }) {
         >
           {isHovered ? (
             <div className="flex items-center space-x-4">
-              {/* Decrement button */}
+              {/* Decrement Button */}
               <button
-                onClick={() => updateCartQuantity(id, quantity - 1)} // Decrease quantity
+                onClick={() => updateCartQuantity(id, quantity - 1)}
                 className="text-gray-700 px-2 py-1 rounded-full hover:bg-gray-400 transition duration-300"
               >
                 -
               </button>
-              {/* Quantity display */}
+              {/* Quantity Display */}
               <span className="mx-4">{quantity || 0}</span>
-              {/* Increment button */}
+              {/* Increment Button */}
               <button
-                onClick={() => updateCartQuantity(id, quantity + 1)} // Increase quantity
+                onClick={() => updateCartQuantity(id, quantity + 1)}
                 className="text-gray-700 px-2 py-1 rounded-full hover:bg-gray-400 transition duration-300"
               >
                 +
               </button>
-              {/* Remove item button */}
+              {/* Trashcan Button */}
               <button
-                onClick={() => removeFromCart(id)} // Remove item from cart
+                onClick={() => removeFromCart(id)}
                 className="text-gray-700 px-2 py-1 rounded-full hover:bg-gray-400 transition duration-300"
               >
                 <i className="fas fa-trash"></i>
               </button>
             </div>
           ) : (
-            // Display quantity when not hovered
             <span>{quantity || 0}</span>
           )}
         </div>
@@ -102,5 +104,4 @@ function CartItem({ item = {}, updateCartQuantity, removeFromCart }) {
   );
 }
 
-// Exporting the Cart component for use in other parts of the application
 export default Cart;

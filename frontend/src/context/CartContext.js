@@ -21,6 +21,7 @@ export function CartProvider({ children }) {
       prevCart.map((item) =>
         item.id === id ? { ...item, quantity: Math.max(0, quantity) } : item
       )
+      .filter((item) => item.quantity > 0) // Remove items with quantity 0
     );
   };
 
@@ -44,9 +45,20 @@ export function CartProvider({ children }) {
     });
   };
 
+  // Function to calculate the total price of the cart
+  const calculateTotalPrice = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, updateCartQuantity, removeFromCart, addToCart }}
+      value={{
+        cart,
+        updateCartQuantity,
+        removeFromCart,
+        addToCart,
+        calculateTotalPrice,
+      }}
     >
       {children}
     </CartContext.Provider>
