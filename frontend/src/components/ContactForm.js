@@ -33,7 +33,7 @@ function ContactForm() {
     event.preventDefault(); // Prevent default form submission behavior
     try {
       // Send form data to the backend API
-      const response = await axios.post('http://localhost:5001/contact', formData);
+      const response = await axios.post('https://curiositycraft.onrender.com/contact', formData);
       alert(response.data.message); // Show success message
     } catch (error) {
       console.error('There was an error sending the message!', error); // Log error
